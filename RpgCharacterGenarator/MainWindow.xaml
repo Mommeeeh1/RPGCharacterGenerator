@@ -1,0 +1,69 @@
+﻿<Window x:Class="RpgCharacterGenarator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RpgCharacterGenarator"
+        mc:Ignorable="d"
+        Title="MainWindow"  Height="500" Width="500" FontSize="17" FontFamily="Candara">
+    <Grid Margin="10" Background="BlanchedAlmond">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <!-- Lägg till en rad för ListView -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Name -->
+        <Label Grid.Row="0" Grid.Column="0" Content="Name:" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="NameTextBox" Margin="5" FontSize="12"/>
+
+        <!-- Strength -->
+        <Label Grid.Row="1" Grid.Column="0" Name="StrengthLabel" Content="Strength:" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="StrengthTextBox" Margin="5" FontSize="12"/>
+
+        <!-- Intelligence -->
+        <Label Grid.Row="2" Grid.Column="0" Name="IntelligenceLabel" Content="Intelligence:" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="IntelligenceTextBox" Margin="5" FontSize="12" />
+
+        <!-- Roll ability scores button -->
+        <Button Grid.Row="3" Grid.Column="1" Content="Roll ability scores" HorizontalAlignment="Left" Margin="5" Click="RollAbilityScores_Click"/>
+
+        <!-- Class selection ComboBox -->
+        <Label Grid.Row="4" Grid.Column="0" Name="ClassLabel" Content="Class:" VerticalAlignment="Center" Margin="0,5"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Name="ClassComboBox" Margin="5" SelectionChanged="ClassComboBox_SelectionChanged">
+            <ComboBoxItem Content="Fighter"/>
+            <ComboBoxItem Content="Wizard"/>
+        </ComboBox>
+
+        <!-- Armor or Mana -->
+        <Label Grid.Row="5" Grid.Column="0" Name="RoleSpecificLabel" Content="" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Name="RoleSpecificTextBox" Margin="5" FontSize="12"/>
+
+        <!-- Save character button -->
+        <Button Grid.Row="7" Grid.Column="1" Content="Save character" HorizontalAlignment="Right" Margin="5" Click="SaveCharacter_Click"/>
+
+        <!-- ListView to display characters -->
+        <ListView Grid.Row="8" Grid.ColumnSpan="2" Name="CharacterListView" Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="100"/>
+                    <GridViewColumn Header="Strength" DisplayMemberBinding="{Binding Strength}" Width="70"/>
+                    <GridViewColumn Header="Intelligence" DisplayMemberBinding="{Binding Intelligence}" Width="90"/>
+                    <GridViewColumn Header="Armor" DisplayMemberBinding="{Binding Armor}" Width="100"/>
+                    <GridViewColumn Header="Mana" DisplayMemberBinding="{Binding Mana}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
