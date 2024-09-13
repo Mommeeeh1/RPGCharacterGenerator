@@ -30,7 +30,7 @@ namespace RpgCharacterGenarator
             // Spara listan från Player modellen i ListViewn
             CharacterListView.ItemsSource = _players;
 
-            // Ny instans av get Manager metoden 
+            // Ny instans av CharacterManager klassen som håller RollAbilityScore metoden
             characterManager = new CharacterManager();
         }
 
@@ -111,22 +111,27 @@ namespace RpgCharacterGenarator
                 // Om man valt fighter
                 if (role == "Fighter")
                 {
-                    // 
+                    // Fånga upp det man skriver i inputen
                     int armor = int.Parse(RoleSpecificTextBox.Text);
+                    // Skapa en ny instans av Fighter modellen
                     Fighter fighter = new Fighter(name, strength, intelligence, armor);
-                    _players.Add(fighter); // Lägg till i listan
+                    // Lägg till i listan på players modellen
+                    _players.Add(fighter); 
 
                 }
                 else if (role == "Wizard")
-                {
+                {   // Fånga upp det man skriver i inputen 
                     int mana = int.Parse(RoleSpecificTextBox.Text);
+                    // Skapa ny instans av Wizard modellen för att använda dens properties
                     Wizard wizard = new Wizard(name, strength, intelligence, mana);
-                    _players.Add(wizard); // Lägg till i listan
+                    // Lägg till i lsitan på players modellen 
+                    _players.Add(wizard);
                 }
 
                 // Uppdatera ListView
                 CharacterListView.Items.Refresh();
 
+                // Cleara efter man har submittat en ny player 
                 NameTextBox.Text = string.Empty;
                 StrengthTextBox.Text = string.Empty;
                 IntelligenceTextBox.Text = string.Empty;
